@@ -1,1 +1,3 @@
-# CRAVE-Recovering-Progress-from-Repeated-Demonstrations-for-Contact-Rich-Robot-Policy-Post-Training
+# CRAVE
+
+Recovering Progress from Repeated Demonstrations for Contact-Rich Robot Policy Post-Training.

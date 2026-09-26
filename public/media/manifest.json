@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-26",
+  "privacy": {
+    "metadata_removed": true,
+    "third_party_embeds": false,
+    "analytics": false
+  },
+  "clips": [
+    {
+      "target": "media/folding/folding-crave-demo.mp4",
+      "source": "web/reports/showcase/static/media/folding-demo.mp4",
+      "edit": "full 48 s source; 854 px wide at 24 fps; H.264 CRF 28; video only; metadata removed",
+      "bytes": 1493636,
+      "sha256": "0109dea5f0a65d66e64079e25c9748fe79765425303e2aa510bc5980acf33d11"
+    },
+    {
+      "target": "media/nail/nail-crave-demo.mp4",
+      "source": "frozen nail-painting source video in the manuscript media registry",
+      "edit": "14 s excerpt starting at 144 s; 854 px wide at 24 fps; H.264 CRF 28; video only; metadata removed",
+      "bytes": 307552,
+      "sha256": "551dad504d38db0c3c2d1898779817305b106a32066fcc93fe5fef4f2b3b9af4"
+    },
+    {
+      "target": "media/writing/writing-crave-demo.mp4",
+      "source": "frozen ordered-writing source video in the manuscript media registry",
+      "edit": "24 s excerpt from 8 s; 854 px wide at 24 fps; H.264 CRF 28; video only; metadata removed",
+      "bytes": 662243,
+      "sha256": "8524a83ceede15689b4324c554d9493da1b3054ed26dadd0c72ab1dadb5b7588"
+    }
+  ],
+  "video_budget": {
+    "total_bytes": 2463431,
+    "largest_clip_bytes": 1493636
+  },
+  "note": "Website clips are illustrative media. Evaluation denominators and result values come from frozen paper-facing ledgers, not from selecting these clips."
+}

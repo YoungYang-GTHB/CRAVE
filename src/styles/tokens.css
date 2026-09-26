@@ -1,0 +1,27 @@
+:root {
+  --page: #f7f9f8;
+  --surface: #ffffff;
+  --surface-soft: #f0f4f2;
+  --ink: #14201e;
+  --muted: #5d6b68;
+  --rule: #d9e1de;
+  --rule-strong: #b9c7c3;
+  --crave: #257c72;
+  --crave-dark: #155a52;
+  --crave-soft: #dcebe7;
+  --state: #607f91;
+  --progress-low: #b56f61;
+  --progress-mid: #b38d55;
+  --baseline-light: #9aa1a6;
+  --baseline-dark: #555d63;
+  --serif: 'Newsreader Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --sans: 'IBM Plex Sans Variable', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --shell: 1240px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --section-space: clamp(82px, 10vw, 144px);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-soft: 0 18px 50px rgb(20 32 30 / 0.07);
+  --ease: 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}

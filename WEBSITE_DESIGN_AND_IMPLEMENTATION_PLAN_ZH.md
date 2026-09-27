@@ -457,8 +457,9 @@ Vite 部署到项目 Pages 时需要配置 repository base path；若后续使�
 - [ ] Anonymous review build：仅在确有需要且完成匿名审计后发布；
 - [x] Public build：已加入当前作者 citation、论文 PDF、OpenReview 与 code release 入口；
 - [x] 设置 social preview、favicon、SEO description 和 `robots.txt`；
+- [x] 通过 GitHub Actions 发布并核验公开首页、PDF 与三个视频资源；
 - [ ] arXiv identifier 可用后替换 preprint 占位信息；
-- [ ] 发布前保留完整截图与资源 hash 作为 release record。
+- [x] 媒体 manifest 已记录视频字节数与 SHA-256；工作流编号写入 release checklist。
 
 ## 12. 首版验收标准
 

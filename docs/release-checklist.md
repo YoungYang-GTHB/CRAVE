@@ -2,11 +2,11 @@
 
 ## Content
 
-- [ ] Re-run `npm run verify` after any result or media change.
-- [ ] Confirm paper PDF is the intended public, author-visible version.
-- [ ] Confirm all media clips are approved for public release.
+- [x] Re-run `npm run verify` after any result or media change.
+- [x] Confirm paper PDF is the intended public, author-visible version.
+- [x] Confirm all media clips are approved for public release.
 - [ ] Replace `Preprint` BibTeX metadata when an arXiv identifier is available.
-- [ ] Verify the OpenReview link is public before announcing the site.
+- [x] Verify the OpenReview link is public before announcing the site.
 
 ## Privacy and anonymous review
 
@@ -14,7 +14,7 @@
 - [x] No remote fonts, YouTube, Vimeo or third-party embeds.
 - [x] Video derivatives remove source metadata.
 - [x] Three H.264 video derivatives total less than 2.5 MB; no clip exceeds 1.5 MB.
-- [ ] Do not submit this author-identifiable GitHub Pages URL as an anonymous ICLR project link.
+- [x] Keep this author-identifiable public release separate from anonymous ICLR review materials.
 
 ## Technical
 
@@ -29,6 +29,8 @@
 
 ## Publication
 
-- [ ] Commit and push only after public-media approval.
-- [ ] Confirm GitHub Pages source is GitHub Actions.
-- [ ] Verify `https://youngyang-gthb.github.io/CRAVE/` after deployment.
+- [x] Commit and push after public-media approval.
+- [x] Confirm GitHub Pages source is GitHub Actions.
+- [x] Verify `https://youngyang-gthb.github.io/CRAVE/` after deployment.
+
+Initial public deployment: source commit `6ac18c1`, Actions run `36287135612`, 27 September 2026 UTC.

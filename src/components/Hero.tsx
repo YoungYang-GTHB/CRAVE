@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { foldingFrames, taskMedia } from '../data/media'
+import { taskMedia } from '../data/media'
 import { links } from '../data/links'
 
 export function Hero() {
@@ -40,7 +40,7 @@ export function Hero() {
             controls={videoActive}
             playsInline
             preload="metadata"
-            poster={foldingFrames[1].src}
+            poster={taskMedia.folding.poster}
             onPlay={() => setVideoActive(true)}
             aria-label="CRAVE garment-folding robot demonstration"
           >

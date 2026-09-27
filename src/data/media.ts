@@ -14,7 +14,7 @@ export const taskMedia = {
     title: 'Garment folding',
     descriptor: 'bimanual deformable manipulation',
     video: `${base}media/folding/folding-crave-demo.mp4`,
-    poster: `${base}media/folding/frame_06_t38p5.jpg`,
+    poster: `${base}media/folding/folding-crave-demo-poster.jpg`,
     evidence: '150 / 300 / 450 demonstrations · 20 rollouts per checkpoint',
   },
   nail: {

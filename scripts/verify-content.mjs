@@ -6,6 +6,7 @@ const root = process.cwd()
 const required = [
   'public/paper/crave-preprint.pdf',
   'public/media/folding/folding-crave-demo.mp4',
+  'public/media/folding/folding-crave-demo-poster.jpg',
   'public/media/nail/nail-crave-demo.mp4',
   'public/media/writing/writing-crave-demo.mp4',
   'src/data/results.ts',
@@ -47,6 +48,13 @@ for (const clip of manifest.clips) {
   if (clipHash !== clip.sha256) throw new Error(`${clip.target} hash does not match the media manifest`)
   if (clipData.byteLength > 2 * 1024 * 1024) throw new Error(`${clip.target} exceeds the 2 MB per-clip budget`)
   videoBytes += clipData.byteLength
+}
+for (const poster of manifest.posters ?? []) {
+  const posterPath = resolve(root, 'public', poster.target)
+  const posterData = await readFile(posterPath)
+  const posterHash = createHash('sha256').update(posterData).digest('hex')
+  if (posterData.byteLength !== poster.bytes) throw new Error(`${poster.target} size does not match the media manifest`)
+  if (posterHash !== poster.sha256) throw new Error(`${poster.target} hash does not match the media manifest`)
 }
 if (videoBytes !== manifest.video_budget.total_bytes) throw new Error('Video total does not match the media manifest')
 if (videoBytes > 3 * 1024 * 1024) throw new Error('Website videos exceed the 3 MB total budget')

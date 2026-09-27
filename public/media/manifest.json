@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-26",
+  "generated_on": "2026-09-27",
   "privacy": {
     "metadata_removed": true,
     "third_party_embeds": false,
@@ -27,6 +27,15 @@
       "edit": "24 s excerpt from 8 s; 854 px wide at 24 fps; H.264 CRF 28; video only; metadata removed",
       "bytes": 662243,
       "sha256": "8524a83ceede15689b4324c554d9493da1b3054ed26dadd0c72ab1dadb5b7588"
+    }
+  ],
+  "posters": [
+    {
+      "target": "media/folding/folding-crave-demo-poster.jpg",
+      "source": "media/folding/folding-crave-demo.mp4",
+      "edit": "frame extracted at 6.0 s from the deployed website clip; JPEG quality 2",
+      "bytes": 40099,
+      "sha256": "302979c5e493fb07e2507b566eb40b782e6fb3d942c1e7b079c8d8240f5c810b"
     }
   ],
   "video_budget": {

@@ -1033,8 +1033,8 @@ tr.is-crave td {
 
 .media-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px 24px;
 }
 
 .media-study {
@@ -1043,7 +1043,13 @@ tr.is-crave td {
 }
 
 .media-study--lead {
-  grid-row: span 2;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.45fr);
+  gap: clamp(24px, 3vw, 44px);
+  align-items: start;
+  padding-bottom: 34px;
+  border-bottom: 1px solid var(--rule);
 }
 
 .media-study video {
@@ -1057,6 +1063,39 @@ tr.is-crave td {
 
 .media-study__copy {
   padding-top: 14px;
+}
+
+.media-study--lead .media-study__copy {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 42px) 0;
+}
+
+.media-study--lead .media-study__copy h3 {
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+}
+
+.media-study--lead .media-study__copy p {
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+.media-study:not(.media-study--lead) .media-study__copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 18px;
+  align-items: baseline;
+}
+
+.media-study:not(.media-study--lead) .media-study__copy > p {
+  justify-self: end;
+}
+
+.media-study:not(.media-study--lead) .media-study__copy > strong,
+.media-study:not(.media-study--lead) .media-study__copy > small {
+  grid-column: 1 / -1;
 }
 
 .media-study__copy h3 {
@@ -1347,7 +1386,29 @@ tr.is-crave td {
   }
 
   .media-study--lead {
+    display: block;
     grid-row: auto;
+    grid-column: auto;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .media-study--lead .media-study__copy {
+    display: block;
+    min-height: 0;
+    padding-top: 14px;
+  }
+
+  .media-study--lead .media-study__copy h3 {
+    font-size: 1.85rem;
+  }
+
+  .media-study:not(.media-study--lead) .media-study__copy {
+    display: block;
+  }
+
+  .media-study:not(.media-study--lead) .media-study__copy > p {
+    justify-self: auto;
   }
 
   .citation-block {

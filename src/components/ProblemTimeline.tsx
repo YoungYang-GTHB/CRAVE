@@ -6,10 +6,11 @@ export function ProblemTimeline() {
   return (
     <section className="problem section shell" id="problem" aria-labelledby="problem-title">
       <div className="section-intro section-intro--wide">
-        <h2 id="problem-title">Frequency is not progress.</h2>
+        <span className="eyebrow">The supervision problem</span>
+        <h2 id="problem-title">Time is not progress.</h2>
         <p>
-          Long holds and repeated frames dominate behavior-cloning data. Brief grasp, contact and alignment transitions can
-          matter more than their frame count suggests.
+          Long holds and repeated configurations dominate behavior-cloning data, while brief grasp, contact and alignment
+          transitions can matter more than their frame count suggests. Equal elapsed time need not mean equal task progress.
         </p>
       </div>
 
@@ -23,7 +24,7 @@ export function ProblemTimeline() {
           ))}
         </div>
         <div className="timeline-track timeline-track--time">
-          <span>normalized time</span>
+          <span>elapsed time</span>
           <svg viewBox="0 0 900 56" role="img" aria-label="Normalized time rises uniformly through holds and transitions">
             <path d="M12 46 L888 8" />
           </svg>

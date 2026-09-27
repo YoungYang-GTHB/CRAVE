@@ -1,103 +1,107 @@
-type Stage = {
+type DetailStage = {
   number: number
   title: string
   detail: string
-  visual: 'episodes' | 'features' | 'fusion' | 'mixture' | 'coverage' | 'decode' | 'increments' | 'conditions'
 }
 
-const groups: { title: string; subtitle: string; stages: Stage[] }[] = [
-  {
-    title: 'Evidence construction',
-    subtitle: 'build joint observation–state evidence',
-    stages: [
-      { number: 1, title: 'Repeated episodes', detail: 'RGB sequences + synchronized robot state', visual: 'episodes' },
-      { number: 2, title: 'Frozen features', detail: 'DINOv3 visual features and standardized state', visual: 'features' },
-      { number: 3, title: 'Joint evidence', detail: '128-D visual + 14-D robot state', visual: 'fusion' },
-    ],
-  },
-  {
-    title: 'Structure + decoding',
-    subtitle: 'discover recurrence and recover a coherent path',
-    stages: [
-      { number: 4, title: 'Recurrent components', detail: 'diagonal BGMM over joint features', visual: 'mixture' },
-      { number: 5, title: 'Coverage screen', detail: 'retain components supported across episodes', visual: 'coverage' },
-      { number: 6, title: 'Whole-episode decoding', detail: 'anchored path with pauses and local reversals', visual: 'decode' },
-    ],
-  },
-  {
-    title: 'Relabel + train',
-    subtitle: 'turn progress into policy conditions',
-    stages: [
-      { number: 7, title: 'Progress increments', detail: 'future task-relative progress over horizon H', visual: 'increments' },
-      { number: 8, title: 'Ordinal conditions', detail: 'LOW / MIDDLE / HIGH conditions for π0.5', visual: 'conditions' },
-    ],
-  },
+const detailStages: DetailStage[] = [
+  { number: 1, title: 'Repeated episodes', detail: 'RGB sequences aligned with synchronized robot state.' },
+  { number: 2, title: 'Frozen visual features', detail: 'DINOv3 encodes appearance without task-specific representation training.' },
+  { number: 3, title: 'Joint evidence', detail: 'Visual features are fused with standardized 14-D robot state.' },
+  { number: 4, title: 'Recurrent components', detail: 'A diagonal BGMM discovers configurations shared across demonstrations.' },
+  { number: 5, title: 'Coverage screen', detail: 'Components must receive support from enough distinct episodes.' },
+  { number: 6, title: 'Whole-episode decoding', detail: 'An anchored path permits pauses and local reversals while preserving global coherence.' },
+  { number: 7, title: 'Future progress increment', detail: 'Each policy row receives a task-relative progress change over horizon H.' },
+  { number: 8, title: 'Ordinal conditions', detail: 'LOW, MIDDLE and HIGH increments condition AWBC post-training.' },
 ]
 
-function StageVisual({ type }: { type: Stage['visual'] }) {
-  if (type === 'episodes') {
-    return (
-      <div className="mini-episodes" aria-hidden="true">
-        {[0, 1, 2].map((row) => (
-          <div key={row}>{[0, 1, 2].map((cell) => <i key={cell} style={{ opacity: 0.48 + 0.2 * cell }} />)}</div>
-        ))}
-      </div>
-    )
-  }
-  if (type === 'features') {
-    return <div className="mini-features" aria-hidden="true"><b>DINOv3</b><i /><i /><i /><span>+</span><em>14-D</em></div>
-  }
-  if (type === 'fusion') {
-    return <div className="mini-fusion" aria-hidden="true"><i>128-D</i><i>14-D</i><span>→</span><b>hᵢ,ₜ</b></div>
-  }
-  if (type === 'mixture') {
-    return <div className="mini-mixture" aria-hidden="true">{Array.from({ length: 15 }, (_, index) => <i key={index} className={`dot-${index % 3}`} />)}</div>
-  }
-  if (type === 'coverage') {
-    return <div className="mini-coverage" aria-hidden="true">{[5, 2, 4].map((filled, column) => <div key={column}>{Array.from({ length: 5 }, (_, row) => <i key={row} className={row < filled ? 'filled' : ''} />)}</div>)}</div>
-  }
-  if (type === 'decode') {
-    return <svg className="mini-line" viewBox="0 0 260 82" aria-hidden="true"><path d="M8 67 L47 55 L87 55 L126 33 L166 45 L205 17 L250 17" /><circle cx="8" cy="67" r="4" /><circle cx="126" cy="33" r="4" /><circle cx="250" cy="17" r="4" /></svg>
-  }
-  if (type === 'increments') {
-    return <div className="mini-increments" aria-hidden="true"><svg viewBox="0 0 190 65"><path d="M6 55 L54 45 L88 47 L126 22 L182 11" /><line x1="88" y1="8" x2="88" y2="60" /><line x1="126" y1="8" x2="126" y2="60" /></svg><span>p(t+H) − p(t)</span></div>
-  }
-  return <div className="mini-conditions" aria-hidden="true"><span>LOW</span><span>MIDDLE</span><span>HIGH</span><b>→ π0.5</b></div>
+function EpisodeVisual() {
+  return (
+    <div className="macro-episodes" aria-hidden="true">
+      {[0, 1, 2].map((row) => <div key={row}>{[0, 1, 2, 3].map((item) => <i key={item} />)}</div>)}
+      <span>RGB</span><span>+</span><span>state</span>
+    </div>
+  )
 }
+
+function FusionVisual() {
+  return (
+    <div className="macro-fusion" aria-hidden="true">
+      <div><i /><i /><i /><b>frozen visual</b></div>
+      <span>+</span>
+      <div className="macro-state"><i /><i /><i /><i /><i /><b>14-D state</b></div>
+      <span>→</span><strong>h<sub>i,t</sub></strong>
+    </div>
+  )
+}
+
+function StructureVisual() {
+  return (
+    <div className="macro-structure" aria-hidden="true">
+      <div className="macro-clusters">{Array.from({ length: 18 }, (_, index) => <i className={`cluster-${index % 3}`} key={index} />)}</div>
+      <span>coverage</span>
+      <svg viewBox="0 0 210 62"><path d="M5 52 C38 38, 55 45, 78 32 S120 22, 143 35 S178 18, 205 8" /><circle cx="5" cy="52" r="3" /><circle cx="205" cy="8" r="3" /></svg>
+    </div>
+  )
+}
+
+function ConditionsVisual() {
+  return (
+    <div className="macro-conditions" aria-hidden="true">
+      <div><span>LOW</span><span>MIDDLE</span><span>HIGH</span></div>
+      <b>→</b><strong>π0.5<small>AWBC</small></strong>
+    </div>
+  )
+}
+
+const macroSteps = [
+  {
+    number: 1,
+    title: 'Repeated episodes',
+    text: 'Align RGB observations with synchronized robot state.',
+    visual: <EpisodeVisual />,
+  },
+  {
+    number: 2,
+    title: 'Joint visual–state evidence',
+    text: 'Fuse frozen visual features with standardized state cues.',
+    visual: <FusionVisual />,
+  },
+  {
+    number: 3,
+    title: 'Recurrent structure + progress',
+    text: 'Keep cross-episode structure and decode a coherent trajectory path.',
+    visual: <StructureVisual />,
+  },
+  {
+    number: 4,
+    title: 'Ordinal relabeling + AWBC',
+    text: 'Turn future progress increments into policy conditions.',
+    visual: <ConditionsVisual />,
+  },
+]
 
 export function MethodPipeline() {
   return (
     <section className="method section" id="method" aria-labelledby="method-title">
       <div className="shell">
         <div className="section-intro section-intro--wide">
-          <h2 id="method-title">From repeated demonstrations to policy conditions.</h2>
+          <span className="eyebrow">Method</span>
+          <h2 id="method-title">Recover structure before assigning labels.</h2>
           <p>
-            CRAVE finds configurations that recur across independently collected episodes, decodes them jointly over each
-            full trajectory, and relabels policy rows by future progress increment.
+            CRAVE finds configurations that recur across independently collected demonstrations, screens them by
+            cross-episode support, and decodes each full trajectory before producing policy conditions.
           </p>
         </div>
 
-        <div className="method-groups">
-          {groups.map((group) => (
-            <section className="method-group" key={group.title}>
-              <header>
-                <h3>{group.title}</h3>
-                <p>{group.subtitle}</p>
-              </header>
-              <div className={`method-group__stages method-group__stages--${group.stages.length}`}>
-                {group.stages.map((stage, index) => (
-                  <article className="method-stage" key={stage.number}>
-                    <div className="method-stage__title">
-                      <span>{stage.number}</span>
-                      <h4>{stage.title}</h4>
-                    </div>
-                    <StageVisual type={stage.visual} />
-                    <p>{stage.detail}</p>
-                    {index < group.stages.length - 1 && <span className="flow-arrow" aria-hidden="true">→</span>}
-                  </article>
-                ))}
-              </div>
-            </section>
+        <div className="macro-pipeline">
+          {macroSteps.map((step, index) => (
+            <article className="macro-step" key={step.number}>
+              <header><span>{step.number}</span><h3>{step.title}</h3></header>
+              <p>{step.text}</p>
+              {step.visual}
+              {index < macroSteps.length - 1 && <b className="macro-arrow" aria-hidden="true">→</b>}
+            </article>
           ))}
         </div>
 
@@ -105,6 +109,18 @@ export function MethodPipeline() {
           <strong>Progress conditions, not value targets.</strong>
           <span>Offline relabeling only · policy architecture unchanged at deployment</span>
         </div>
+
+        <details className="pipeline-details">
+          <summary>Explore the full eight-stage pipeline <span aria-hidden="true">↓</span></summary>
+          <ol>
+            {detailStages.map((stage) => (
+              <li key={stage.number}>
+                <span>{stage.number}</span>
+                <div><h4>{stage.title}</h4><p>{stage.detail}</p></div>
+              </li>
+            ))}
+          </ol>
+        </details>
       </div>
     </section>
   )

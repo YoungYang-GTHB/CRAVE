@@ -1,5 +1,6 @@
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
+import { ResultSnapshot } from './components/ResultSnapshot'
 import { ProblemTimeline } from './components/ProblemTimeline'
 import { MethodPipeline } from './components/MethodPipeline'
 import { Results } from './components/Results'
@@ -14,10 +15,11 @@ function App() {
       <Header />
       <main id="main">
         <Hero />
+        <ResultSnapshot />
         <ProblemTimeline />
         <MethodPipeline />
-        <Results />
         <RobotGallery />
+        <Results />
         <Resources />
       </main>
       <footer className="footer shell">

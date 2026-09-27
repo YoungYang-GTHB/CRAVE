@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 const navigation = [
   ['Method', '#method'],
-  ['Results', '#results'],
-  ['Robot demos', '#demos'],
+  ['Robots', '#demos'],
+  ['Evidence', '#results'],
   ['Paper', '#resources'],
 ] as const
 

@@ -6,23 +6,21 @@ export function Results() {
   return (
     <section className="results section shell" id="results" aria-labelledby="results-title">
       <div className="section-intro section-intro--wide">
-        <h2 id="results-title">Robot policy results.</h2>
+        <span className="eyebrow">Complete evidence</span>
+        <h2 id="results-title">Policy outcomes, mechanism and cost.</h2>
         <p>
-          Direct CRAVE reaches the highest or joint-highest observed folding success count at every data scale, while
-          preserving the base policy architecture.
+          The complete folding record is followed by diagnostics that isolate whole-trajectory recovery and the cost of
+          constructing policy labels.
         </p>
       </div>
       <div className="results-lead">
         <FoldingCharts />
         <aside className="results-finding">
-          <span>Observed result</span>
-          <strong>11 / 20</strong>
-          <p>successes with 150 demonstrations</p>
-          <strong>15 / 20</strong>
-          <p>with 300 demonstrations</p>
-          <strong>16 / 20</strong>
-          <p>with 450 demonstrations</p>
-          <small>One deployed checkpoint per arm; sequential rollouts.</small>
+          <span>Reading the plots</span>
+          <p><strong>Teal</strong> marks CRAVE throughout.</p>
+          <p><strong>Gray</strong> marks Plain π0.5 and χ₀-AE.</p>
+          <p><strong>Intervals</strong> are Wilson 95% confidence intervals.</p>
+          <small>One deployed checkpoint per arm; 20 sequential rollouts.</small>
         </aside>
       </div>
 

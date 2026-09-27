@@ -8,6 +8,7 @@ export function RobotGallery() {
     <section className="gallery section" id="demos" aria-labelledby="gallery-title">
       <div className="shell">
         <div className="section-intro section-intro--wide">
+          <span className="eyebrow">Robot studies</span>
           <h2 id="gallery-title">Three contact-rich tasks. One relabeling route.</h2>
           <p>
             The same offline route spans deformable-object manipulation, fine tool–surface contact and ordered precision
